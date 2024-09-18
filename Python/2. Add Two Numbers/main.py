@@ -13,14 +13,19 @@ class Solution:
         cur = res
 
         while l1 or l2 or carry:
+            # getting values for calculating
             val1 = l1.val if l1 else 0
             val2 = l2.val if l2 else 0
 
-            sum = val1 + val2 + carry
-            carry = (val1 + val2 + carry) // 10
-            sum = sum % 10
+            # calculating and adding data to node
+            sum = (val1 + val2 + carry)
+            carry = sum // 10
+            val = sum % 10
 
-            cur.next = ListNode(sum)
+            # add new node to the list with current val
+            cur.next = ListNode(val)
+
+            # moving to next step
             cur = cur.next
             l1 = l1.next if l1 else None
             l2 = l2.next if l2 else None
